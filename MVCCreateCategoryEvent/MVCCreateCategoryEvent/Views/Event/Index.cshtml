@@ -1,0 +1,103 @@
+﻿@using MVCCreateCategoryEvent.Models
+@model MVCCreateCategoryEvent.Models.Event
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <style>
+        .form-control {
+            width: 200px !important;
+        }
+
+        .form-group {
+            width: 23%;
+            display: inline-block;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="container">
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+        <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
+
+        <script>
+            function SuccessMessage() {
+                $("#Name").val("");
+                $("#Type").val("");
+                $("#Organizer").val("");
+            }
+        </script>
+        <!--Fill your code here-->
+
+        <div class="form-horizontal" style="margin-top: 20px;">
+            <h4>Create Event</h4>
+            <hr />
+            <!--Fill your code here-->
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" id="txtName" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label>Type</label>
+                <input type="text" id="txtType" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label>Organizer</label>
+                <input type="text" id="txtOrganizer" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" id="Create" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div style="margin-top: 30px" id="ListEvents">
+            @{
+                Html.RenderAction("ListEventCatagories", "Event");
+            }
+        </div>
+    </div>
+    <script>
+        $(function () {
+            $('#Create').on('click', CreateEvent);
+        })
+        function CreateEvent() {
+            var Name = $('#txtName').val();
+            var Type = $('#txtType').val();
+            var Organizer = $('#txtOrganizer').val();
+            var Model = {
+                'Name': Name,
+                'Type': Type,
+                'Organizer': Organizer
+            }
+            $.ajax({
+                url: '/Event/Save',
+                method: 'POST',
+                data: JSON.stringify(Model),
+                contentType: 'application/json',
+                dataType: 'html',
+                success: function (data) {
+                    $("ListEvents").html(data);
+                },
+                error: function (msg) {
+                    console.log(msg);
+                }
+            })
+        }
+    </script>
+</body>
+</html>

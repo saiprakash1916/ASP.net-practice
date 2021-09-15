@@ -1,0 +1,57 @@
+﻿@model MVCRent.Models.Rent
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <style>
+        h2 {
+            color: #48237e;
+            margin: 20px 0;
+        }
+
+        .btn-primary {
+            background-color: #48237e;
+            border-color: #48237e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Rent calculation</h2>
+        @using (Html.BeginForm("Calculate", "Rent", FormMethod.Post))
+        {
+            <div class="row form-group">
+                <div class="col-sm-2">@Html.LabelFor(s=>s.Name)</div>
+                <div class="col-sm-4">@Html.TextBoxFor(s => s.Name, new { @class = "form-control", @id = "hallName" })</div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-2">@Html.LabelFor(s => s.HallOwner)</div>
+                <div class="col-sm-4">@Html.TextBoxFor(s => s.HallOwner, new { @class = "form-control", @id = "ownerName" })</div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-2">@Html.LabelFor(s => s.CostPerDay)</div>
+                <div class="col-sm-4">@Html.TextBoxFor(s => s.CostPerDay, new { @class = "form-control", @id = "costPerDay" })</div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-2">@Html.LabelFor(s => s.StartDate)</div>
+                <div class="col-sm-4">@Html.TextBoxFor(s => s.StartDate, new { @class = "form-control", @id = "startDate", @name= "startDate" })</div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-2">@Html.LabelFor(s => s.EndDate)</div>
+                <div class="col-sm-4">@Html.TextBoxFor(s => s.EndDate, new { @class = "form-control", @id = "endDate" })</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4"><input type="submit" value="Calculate" class="btn btn-primary" id="calculate" /></div>
+            </div>
+        }
+    </div>
+</body>
+</html>

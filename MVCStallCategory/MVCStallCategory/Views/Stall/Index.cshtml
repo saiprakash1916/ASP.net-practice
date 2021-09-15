@@ -1,0 +1,83 @@
+﻿@using MVCStallCategory.Models
+@model IEnumerable<MVCStallCategory.Models.Stall>
+@{
+    ViewBag.Title = "Index";
+}
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>      
+    <style>
+        h1 {
+            color: #EC5578;
+        }
+
+        select {
+            margin-left: 625px;
+            padding: 5px;
+        }
+    </style>
+    <script>
+        $(function () {
+            $('#filter').on('change', getStalls);
+        })
+        function getStalls() {
+            var category = $('#filter option:selected').val();
+            $("#tbody").empty();
+            $.ajax({
+                url: '/stall/GetStalls',
+                method: 'GET',
+                data: { 'category': category },
+                contentType: 'application/json',
+                success: function (data) {
+                    debugger;
+                    if (data != null) {
+                        var tableContent = "";
+                        for (var i = 0; i < data.length; i++) {
+                            tableContent += "<tr>";
+                            tableContent += "<td>" + data[i].id + "</td>";
+                            tableContent += "<td>" + data[i].Name + "</td>";
+                            tableContent += "<td>" + data[i].Mobile + "</td>";
+                            tableContent += "<td>" + data[i].Category + "</td>";
+                            tableContent += "<td>" + data[i].Owner + "</td>";
+                            tableContent += "</tr>";
+                        }
+                        $("tbody").append(tableContent);
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<h2>Index</h2>
+<center>
+    <h1>Stall Details</h1>
+    <select id="filter">
+        <option value="-1">Select Category</option>
+        <option value="sweet">Sweet</option>
+        <option value="book">Book</option>
+        <option value="fashion">Fashion</option>
+    </select>
+    <table id="stallDetails" border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Category</th>
+                <th>Owner</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            @foreach (Stall s in Model)
+            {
+            <tr>
+                <td>@s.Id</td>
+                <td>@s.Name</td>
+                <td>@s.Mobile</td>
+                <td>@s.Category</td>
+                <td>@s.Owner</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</center>
+

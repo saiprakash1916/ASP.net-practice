@@ -1,0 +1,43 @@
+﻿@using MVCDisplayStall.Models
+@model IEnumerable<MVCDisplayStall.Models.Stall>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+    <style>
+        h2 {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Stall List</h2>
+        <table class="table table-bordered table-striped" id="stallList" style="width: 500px">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            @foreach (Stall stalls in Model)
+            {
+                <tbody>
+                    <tr>
+                        <td>@stalls.Name</td>
+                        <td>@stalls.Type</td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>
+</body>
+</html>

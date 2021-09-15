@@ -1,0 +1,69 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ASPMasterPage.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <asp:PlaceHolder runat="server">
+    </asp:PlaceHolder>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        .header, .footer {
+            background-color: #48237e;
+            padding: 20px 40px;
+        }
+        .footer {
+            text-align: center;
+            color: #fff;
+        }
+        .header .col-sm-4 a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 26px;
+            font-weight: 700;
+        }
+        .col-sm-8 {
+            padding: 8px 40px 8px 8px;
+            text-align: right;
+        }
+        .col-sm-8 a {
+            text-align: center;
+            color: #fff;
+        }
+        section.main-content {
+            padding: 40px;
+            line-height: 20px;
+        }
+        body {
+            width: 75%;
+            margin: 0 auto;
+        }
+        h3, h2 {
+            color: #48237e;
+        }
+    </style>
+</head>
+<body>
+    <form runat="server">
+        <section class="header">
+             <div id="topContent" class="row">
+                <div class="col-sm-4"><a href="~/" id="logo">Eventforce</a></div>
+                <div class="col-sm-8"><a href="~/Contact.aspx" id="contact" runat="server">Contact</a></div>
+            </div>
+        </section>
+        <div class="container body-content" id="mainContent">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder> 
+        </div>
+        <br />
+        <section class="footer">
+            <div id="footerContent">Copyright: 2020- Eventforce. All Rights Reserved</div>
+        </section>
+    </form>
+</body>
+</html>

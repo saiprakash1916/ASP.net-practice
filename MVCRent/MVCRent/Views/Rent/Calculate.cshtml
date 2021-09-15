@@ -1,0 +1,28 @@
+﻿@model MVCRent.Models.Rent
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Calculate</title>
+    <style>
+        h2 {
+            color: #48237e;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>@Model.Name</h2>
+        <div id="owner">Owner: @Model.HallOwner</div>
+        <div id="cost">Cost per day: @Model.CostPerDay</div>
+        <div id="rentalDays">Renting from @Model.StartDate to @Model.EndDate</div>
+        <div id="totalCost">Total cost:  </div>
+    </div>
+</body>
+</html>

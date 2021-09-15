@@ -1,0 +1,62 @@
+﻿@model LibraryManagementSystemMVC.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SignUp</title>
+</head>
+<body>
+    <center>
+        <div class="container" style="margin-top:30px">
+            @using (Html.BeginForm("SignUp", "User", FormMethod.Post))
+            {
+                <div class="row">
+                    <div class="col-sm-4" >
+                        @Html.LabelFor(m => m.UserName)
+                    </div>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Username" })
+                        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "badge badge-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        @Html.LabelFor(m => m.Password)
+                    </div>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "badge badge-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        @Html.LabelFor(m => m.Roll)
+                    </div>
+                    <div class="col-sm-8">
+                        @Html.DropDownListFor(m => m.Roll,
+                       new List<SelectListItem>
+                       {
+                           new SelectListItem{Text="Admin",Value="1"},
+                           new SelectListItem{Text="Librarian",Value="2"},
+                           new SelectListItem{Text="Student",Value="3"},
+                       }, "Please select role", new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <input type="submit" style="margin-left:50px" value="Submit" />
+                    </div>
+                    <div class="col-sm-8">
+
+                    </div>
+                </div>
+            }
+        </div>
+    </center>
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿@using MVCAjaxEvent.Models
+@model IEnumerable<MVCAjaxEvent.Models.Event>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script>
+        function get() {
+            $('#submit').on('click', get);
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <div class="container">
+            <h2>Alphine Interactive</h2>
+            <h3>Intellitrack Event Management System</h3>
+            <button id="submit">Get Event list</button>
+        </div>
+        <div id="event">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Event Name</th>
+                        <th>Enent Details</th>
+                        <th>Event Type</th>
+                        <th>Event Organizer Name</th>
+                    </tr>
+                </thead>
+                @foreach (Event e in Model)
+                    {
+                        <tbody>
+                            <tr>@e.eventName</tr>
+                            <tr>@e.enentDetails</tr>
+                            <tr>@e.eventType</tr>
+                            <tr>@e.eventOrganizerName</tr>
+                        </tbody>
+                    }
+            </table>
+        </div>
+    </center>
+</body>
+</html>

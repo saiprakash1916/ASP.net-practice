@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>Details</h2>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#btnSaveContact").click(function() {
+            SaveContent();
+        });
+    });
+    function SaveContent() {
+        var firstName = $("#txtFirstName").val();
+        var lastName = $("#txtLastName").val();
+        var address = $("#txtAddress").val();
+
+        var objcontactViewModel = { FirstName: firstName, LastName: lastName, Address: address };
+        $.ajax({
+            async: true,
+            type: 'POST',
+            dataType: 'JSON',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(objcontactViewModel),
+            url: '/Home/Index',
+            success: function (response) {
+                if (response.success == true) {
+                    toastr.success(response.message, 'Success Alert', { timeOut: 3000, "closeButton": true });
+                } else {
+                    toastr.error(response.message, 'Error Alert', { timeOut: 3000, "closeButton": true });
+                }
+            },
+            error: function () {
+                toastr.error('There is some problem to process your request', 'Error Alert',  { timeOut: 3000 });
+            }
+        });
+    }
+</script>
+
+<div class="container">
+    <div class="row">
+        <div class="form-group">
+            First Name:
+            <input id="txtFirstName" type="text" name="firstName" value="" class="form-control" />
+        </div>
+        <div class="form-group">
+            Last Name:
+            <input id="txtLastName" type="text" name="lastName" value="" class="form-control" />
+        </div>
+        <div class="form-group">
+            Address:
+            <input id="txtAddress" type="text" name="address" value="" class="form-control" />
+        </div>
+        <div class="form-group">
+            <input id="btnSaveContact" type="button" name="SaveContent" value="Save Contact" class="form-control btn-success" />
+        </div>
+    </div>
+</div>

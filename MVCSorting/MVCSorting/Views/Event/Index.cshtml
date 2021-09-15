@@ -1,0 +1,81 @@
+﻿@using MVCSorting.Models
+@model IEnumerable<MVCSorting.Models.Event>
+@{
+    Layout = null;
+    var count = 1;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+    <style>
+        input, select {
+            width: 230px !important;
+            height: 30px !important;
+            padding-left: 5px;
+        }
+
+        .col-sm-3 {
+            -ms-flex: 0 0 23%;
+            flex: 0 0 23%;
+            max-width: 23%;
+        }
+
+        .col-sm-2 {
+            -ms-flex: 0 0 14%;
+            flex: 0 0 14%;
+            max-width: 14%;
+        }
+
+        .btn-primary {
+            margin: 20px 5px;
+            background-color: #48237e;
+        }
+
+        h2 {
+            color: #48237e;
+            margin: 20px 0px;
+        }
+
+        #Submit {
+            height: auto !important;
+            margin-left: 90px;
+            background-color: #48237e;
+        }
+
+        table {
+            margin: 0px 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Events</h2>
+        <div class="row">
+            <div class="col-sm-10"><button id="SortByName" class="btn btn-primary float-right" style="color:#48237e">@Html.ActionLink("Sort based on name", "SortByName")</button></div>
+            <div class="col-sm-2"><button id="SortByDate" class="btn btn-primary float-right" style="color:#48237e">@Html.ActionLink("Sort based on date", "SortByDate")</button></div>
+        </div>
+        <table class="table table-bordered">
+            <tr>
+                <th>S.no</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Date</th>
+            </tr>
+            @foreach (Event e in Model)
+            {
+        <tr>
+            <td>@(count++)</td>
+            <td>@e.Name</td>
+            <td>@e.Type</td>
+            <td>@e.Date</td>
+        </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+﻿@model MVCFirstproject.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Display</title>
+</head>
+<body>
+    <!--<div>
+        <label>-->
+            @*@(((User)ViewData["UserDetails"]).Name)
+            @(((User)TempData["UserDetails"]).Name)*@
+            @*@Model.user.Name
+        </label>
+        <lable>@Model.user.Username</lable>
+        <lable>@Model.user.Gender</lable>
+        <lable>@Model.usertype.UserTypeId</lable>*@
+    <!--</div>
+    <div>-->
+        @*@ViewBag.User.Username*@
+        @*<label> @(((User)ViewData["UserDetails"]).Username)</label>*@
+    <!--</div>
+    <div>-->
+        @*@if (((User)ViewData["UserDetails"]).Gender == 1) {
+        <label>Male</label>
+        }
+        else{
+        <lable>Female</lable>
+        }*@
+    <!--</div>-->
+    @Model.Name
+    @Model.Username
+    @Model.Gender
+    @Model.UserRoll
+</body>
+</html>

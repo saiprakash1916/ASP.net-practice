@@ -1,0 +1,114 @@
+﻿@model MVCFirstproject.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <br />
+    <br />
+    <div class="container">
+        @*<form action="Display" method="post">
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <label>Name:</label>
+                </div>
+                <div class="col-sm-8">
+                    <input type="text" name="Name" id="txtName" class="form-control" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <label>Username:</label>
+                </div>
+                <div class="col-sm-8">
+                    <input type="text" name="Username" id="txtUserame" class="form-control" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <label>Gender:</label>
+                </div>
+                <div class="col-sm-8">
+                    <input type="radio" name="Gender" id="rdbMale" value="Male" />Male
+                    <input type="radio" name="Gender" id="rdbFemale" value="Female" />Female
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <label>Type:</label>
+                </div>
+                <div class="col-sm-8">
+                    <select name="UserType">
+                        <option value="0">Select Option</option>
+                        <option value="1">Admin</option>
+                        <option value="2">Librarian</option>     
+                        <option value="3">Student</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-sm-4">
+                    <input type="submit" value="Submit" class="btn btn-danger" />
+                </div>
+                <div class="col-sm-8">
+
+                </div>
+            </div>
+        </form>*@
+        @using (Html.BeginForm("Display","User",FormMethod.Post))
+        {
+            <div class="row">
+                <div class="col-sm-4">
+                    @Html.LabelFor(m => m.Name)
+                </div>
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(m => m.Name,new { @class="form-control" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    @Html.LabelFor(m => m.Username)
+                </div>
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    @Html.LabelFor(m => m.Gender)
+                </div>
+                <div class="col-sm-8">
+                    Male:@Html.RadioButtonFor(m => m.Gender, "1")
+                    Female:@Html.RadioButtonFor(m => m.Gender, "2")
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    @Html.LabelFor(m => m.UserRoll)
+                </div>
+                <div class="col-sm-8">
+                    @Html.DropDownListFor(m => m.UserRoll, new List<SelectListItem> {
+                         new SelectListItem {Text="Admin", Value="1" },
+                         new SelectListItem {Text="Librarian", Value="2" },
+                         new SelectListItem {Text="Student", Value="3" },
+                },"Please select Role", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <input type="submit" value="Submit" />
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>

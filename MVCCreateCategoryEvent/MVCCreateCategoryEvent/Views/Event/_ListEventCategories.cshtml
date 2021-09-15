@@ -1,0 +1,55 @@
+﻿@using MVCCreateCategoryEvent.Models
+@model IEnumerable<MVCCreateCategoryEvent.Models.Event>
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Exhibition</h2>
+        <table class="table" id="exhibitionList">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Organizer</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Event e in Model)
+                {
+                    if (e.Type == "Exhibition")
+                    {
+                        <tr>
+                            <td>@e.Name</td>
+                            <td>@e.Type</td>
+                            <td>@e.Organizer</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-6">
+        <h2>Stage Event</h2>
+        <table class="table" id="stageEventList">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Organizer</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Event e in Model)
+                {
+                    if (e.Type == "Stage Event")
+                    {
+                        <tr>
+                            <td>@e.Name</td>
+                            <td>@e.Type</td>
+                            <td>@e.Organizer</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

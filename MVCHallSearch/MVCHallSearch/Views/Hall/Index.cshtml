@@ -1,0 +1,84 @@
+﻿@using MVCHallSearch.Models
+@model IEnumerable<MVCHallSearch.Models.Hall>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+    <style>
+        h2 {
+            color: #48237e;
+            margin: 20px 0;
+        }
+
+        .btn-primary {
+            background-color: #48237e;
+            border-color: #48237e;
+        }
+
+        .col-md-2 {
+            margin: 20px 0px;
+        }
+
+        .btn-primary {
+            margin: 20px 0px;
+        }
+
+        center {
+            margin: 20px 0;
+        }
+
+        .form-control {
+            width: 200px;
+            display: inline-block;
+        }
+
+        .btn-danger {
+            margin-top: -3px;
+            padding-bottom: 6px;
+            margin-left: 10px;
+        }
+
+        #location {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"> 
+        @*<h2>Halls</h2>*@
+        <div class="row form-group">
+            <h2>Halls</h2>
+            <div class="col-md-2 float-right"><input type="search" id="location" placeholder="Enter the location" class="form-control" /></div>
+            <div class="col-lg-8 float-right"><button class="btn btn-primary">@Html.ActionLink("Search","Index")</button></div>
+        </div>
+    </div>
+    <center>
+        <table id="hallList" class="table table-striped">
+            <tr>
+                <th>Name</th>
+                <th>Owner</th>
+                <th>Cost per day</th>
+                <th>Mobile number</th>
+                <th>Location</th>
+            </tr>
+            @foreach (Hall hall in Model)
+            {
+                <tr>
+                    <td>@hall.HallName</td>
+                    <td>@hall.OwnerName</td>
+                    <td>@hall.CostPerDay</td>
+                    <td>@hall.MobileNumber</td>
+                    <td>@hall.Address</td>
+                </tr>
+            }
+        </table>
+    </center>
+</body>
+</html>
